@@ -1,0 +1,21 @@
+= form_for @simple_file do |f|
+  - if @simple_file.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@simple_file.errors.count, "error")} prohibited this simple_file from being saved:"
+      ul
+        - @simple_file.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :desc
+    = f.text_area :desc
+  .field
+    = f.label :category
+    = f.text_field :category
+  .field
+    = f.label :document
+    = f.file_field :document
+  .actions = f.submit

@@ -1,0 +1,48 @@
+.container-fluid.d-none.d-md-flex.flex-column
+  .d-none.d-md-flex.flex-row.justify-content-between.mb-4
+    h1 Документы
+    = link_to 'Новый документ', new_simple_file_path, class: 'btn btn-outline-primary my-auto'
+
+  button.btn.btn-primary aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample" data-toggle="collapse" type="button"
+    .h2 Общие документы
+  #collapseExample.collapse.mb-4
+    .card.card-body
+      -@simple_files.each do |file|
+        .mx-2.my-2.card.card-body.d-none.d-md-flex.flex-row.justify-content-between
+          .text-black-50.h4=file.name
+          =link_to  controller: :simple_files, action: :deliver_document, id: file.id, simple_file_id: file.id,  class: 'btn btn-sm btn-outline-primary' do
+            i.fas.fa-file-alt
+  button.mt-4.btn.btn-primary aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample2" data-toggle="collapse" type="button"
+    .h2 Специальные документы
+  #collapseExample2.collapse
+    .card.card-body
+      - @simple_spec_files.each do |file|
+        .mx-2.my-2.card.card-body.d-none.d-md-flex.flex-row.justify-content-between
+          .text-black-50.h4= file.name
+          = link_to controller: :simple_files, action: :deliver_document, id: file.id, simple_file_id: file.id, class: 'btn btn-sm btn-outline-primary' do
+            i.fas.fa-file-alt
+
+.container-fluid.d-flex.d-md-none.flex-column
+  = link_to 'Новый документ', new_simple_file_path, class: 'btn btn-outline-primary '
+
+  h1.mx-auto Документы
+
+  button.btn.btn-primary aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample3" data-toggle="collapse" type="button"
+    | Общие документы
+  #collapseExample3.collapse.mb-4
+    .my-1
+      - @simple_files.each do |file|
+        .mx-2.my-2.card.card-body.d-flex.d-md-none.flex-row
+          = link_to controller: :simple_files, action: :deliver_document, id: file.id, simple_file_id: file.id, class: 'mr-2 btn btn-sm btn-outline-primary' do
+            i.fas.fa-file-alt.mr-2>
+          = file.name
+  button.mt-4.btn.btn-primary aria-controls="collapseExample" aria-expanded="false" data-target="#collapseExample4" data-toggle="collapse" type="button"
+    | Специальные документы
+  #collapseExample4.collapse
+    .my-1
+      - @simple_spec_files.each do |file|
+        .mx-2.my-2.card.card-body.d-flex.flex-row.d-md-none
+          = link_to controller: :simple_files, action: :deliver_document, id: file.id, simple_file_id: file.id, class: ' btn btn-sm btn-outline-primary' do
+            i.fas.fa-file-alt.mr-2>
+          .text-black-50= file.name
+
