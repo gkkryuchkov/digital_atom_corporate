@@ -1,25 +1,26 @@
-h1 Listing users
+.container
+  h1 Listing users
 
-table
-  thead
-    tr
-      th Username
-      th Work since
-      th Post
-      th
-      th
-      th
-
-  tbody
-    - @users.each do |user|
+  table
+    thead
       tr
-        td = user.username
-        td = user.work_since
-        td = user.post
-        td = link_to 'Show', user
-        td = link_to 'Edit', edit_user_path(user)
-        td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+        th Username
+        th Work since
+        th Post
+        th
+        th
+        th
 
-br
+    tbody
+      - @users.each do |user|
+        tr
+          td = user.username
+          td = user.work_since
+          td = user.post
+          td = link_to 'Show', user
+          td = link_to 'Edit', edit_user_path(user)
+          td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
 
-= link_to 'New User', new_user_path
+  br
+
+  = link_to 'New User', new_user_path
