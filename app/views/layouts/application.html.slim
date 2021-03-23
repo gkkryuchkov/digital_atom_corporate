@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title
+      =t('app.name')
+    meta[name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    / = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    / = favicon_link_tag 'favicon.ico'
+    / = favicon_link_tag 'favicon-32x32.png', sizes: '32x32'
+    / = favicon_link_tag 'apple-icon.png', rel: 'apple-touch-icon'
+
+  body#page-top
+    #wrapper
+      =render 'sidebar'
+      #content-wrapper.d-flex.flex-column
+        #content
+          =render 'navbar'
+          .container-fluid
+          / =render 'flash'
+            = yield
+        =render 'footer'
